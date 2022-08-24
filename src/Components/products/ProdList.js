@@ -2,14 +2,22 @@ import React from 'react';
 import classes from './ProdList.module.css';
 import ProdItems from './ProdItems';
 import Menu from '../ui/Menu';
-
+import {useState,  useCallback } from 'react';
 
 
 function ProdList(props) {
-    
-
+    const [filtru, setFiltru] = useState(props.products) 
     const category = ["Toate"];
-    
+
+    const changeCateg = useCallback((catg) => {
+        let categFilter = catg
+        if (categFilter === "Toate") {
+           setFiltru(props.products) 
+        } else {
+         let filters = props.products.filter((fil) => fil.categ === categFilter)
+        setFiltru(filters)  
+        }    
+    }, [filtru]);
    
     props.products.map((cat) => {
       if (!category.includes(cat.categ)) {
@@ -27,14 +35,14 @@ function ProdList(props) {
                         categ={catg}
                         key={category.indexOf(catg)}  
                         produs={props.products}
-                        
+                        change={changeCateg}
                     />                    
                 ))}   
             </ul> 
             </div>          
             <div className={classes.cards}>
                <ul className={classes.list}>
-                {props.products.map((prod) => (
+                {filtru.map((prod) => (
                 <ProdItems
                     key={prod.id}
                     id={prod.id}
@@ -45,7 +53,7 @@ function ProdList(props) {
                     description={prod.description}
                     promo={prod.oferta}
                         stoc={prod.stoc}
-                     
+                        
                 />
             ))}
             </ul> 
