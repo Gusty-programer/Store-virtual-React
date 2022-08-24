@@ -9,7 +9,9 @@ function Card(props) {
         
         <div className={classes.image}>
             <img src={props.image} alt={props.name} />
-            
+            {props.promo > 0 &&
+                <div className={classes.promo}><span>{props.promo}%</span></div>
+            }
             </div>
         <div>
             <h3>{props.name}</h3>

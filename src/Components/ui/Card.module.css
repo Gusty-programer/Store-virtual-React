@@ -18,7 +18,50 @@
     width: 100%;
     object-fit: cover;
 }
+.promo{
+    position: absolute;
+    display: flex;
+    top: 2px;
+    left: 2px;
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    z-index: 10;
+    box-shadow: 0 0 12px  yellow;
+    transform: rotateZ(15deg);
+    align-items: center;
+    justify-content: center;
+}
+.promo::before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    
+    transform: rotateZ(45deg);
+    z-index: -1;
 
+}
+.promo::after{
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 4px;
+    height: 40px;
+    background-color: red;
+    box-shadow: 0 0 12px  yellow;
+    z-index: -1;
+}
+.promo span{
+    color: white;
+    font-weight: bold;
+    transform: rotateZ(-15deg);
+    font-size: 0.9rem;
+}
 
 .pret_promo span{
      color: red;
