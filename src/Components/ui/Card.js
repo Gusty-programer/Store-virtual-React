@@ -4,6 +4,20 @@ import classes from './Card.module.css';
 
 function Card(props) {
      
+    function addcos() {
+        let local = localStorage.getItem("items")
+        if (local) {
+            local = local.split(",")
+        } else {
+            local = []
+        }
+        !local.includes(props.id) && local.push(props.id)
+        localStorage.setItem("items", local)
+        localStorage.setItem("count"+props.id,1)
+        console.log("length=",local.length)
+        // console.log(localStorage)
+        
+    }
 
     return (<div className={classes.card}>
         
@@ -31,7 +45,7 @@ function Card(props) {
         </div>
             }
             <div className={classes.btn}>
-            {props.stoc !== 0 ? <button >Adauga in cos</button> :
+            {props.stoc !== 0 ? <button onClick={addcos}>Adauga in cos</button> :
                 <p ><span>Out of stoc</span></p>}          
             </div>   
     </div>)

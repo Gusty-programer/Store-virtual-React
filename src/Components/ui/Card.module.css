@@ -67,9 +67,10 @@
      color: red;
 }
 .btn button {
-    width: 120px;
+    width: 125px;
     padding: 3px;
     font-size: 1.1rem;
+    border: none;
     background-image: linear-gradient(to right, rgb(104, 177, 206), rgb(162, 214, 230));
     border-radius: 4px;
     box-shadow: 2px 2px 3px rgb(7, 106, 206);

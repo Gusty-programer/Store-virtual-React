@@ -1,0 +1,52 @@
+.divcos{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 120px;
+    box-shadow: 0 0 2px black;
+    margin: 5px auto;
+}
+.produs_cos{
+    display: flex;
+    width: 100%;
+    
+    justify-content: space-between;
+    align-items: center;
+}
+.produs_cos span{
+    font-weight: bold;
+}
+.del{
+    font-size: 0.7rem;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+.del:hover{
+    color: red;
+}
+
+.subtotal span{
+    color: red;
+    font-size: 1.2rem;
+}
+.btn_count button{
+    border: none;
+    border-radius: 2px;
+    background-color: #ccc;
+    margin-left: 4px;
+    margin-right: 2px;
+}
+.disp{
+    float: left;
+}
+.disp span{
+    color: green;
+    font-weight: bold;
+}
+.eco{
+    float: right;
+}
+.info{
+    padding: 0 20px;
+}
