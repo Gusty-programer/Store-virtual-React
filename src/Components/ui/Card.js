@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import classes from './Card.module.css';
 
 
@@ -14,13 +15,12 @@ function Card(props) {
         !local.includes(props.id) && local.push(props.id)
         localStorage.setItem("items", local)
         localStorage.setItem("count"+props.id,1)
-        console.log("length=",local.length)
-        // console.log(localStorage)
         
     }
 
     return (<div className={classes.card}>
         
+        <Link to={`/${props.id}`}>
         <div className={classes.image}>
             <img src={props.image} alt={props.name} />
             {props.promo > 0 &&
@@ -29,7 +29,7 @@ function Card(props) {
             </div>
         <div>
             <h3>{props.name}</h3>
-            </div>
+            </div></Link>
             <div>
                 <p>{props.scara}</p>
             </div>

@@ -17,7 +17,11 @@ function CosCumparaturi() {
     return (
         <section>
             <h1>Cos cumparaturi</h1>
-                    <button className='back'><Link to='/'>Inapoi la cumparaturi</Link></button>           
+            {localstore.length === 0 &&
+                <div className='divback'>
+                    <h2>Nu aveti produse in cos!</h2>
+                    <button className='back'><Link to='/'>Inapoi la cumparaturi</Link></button>
+                </div>}         
             <div className='produse_cos'>
                 <div className='produse'>
             {localstore.map((idp) => (
