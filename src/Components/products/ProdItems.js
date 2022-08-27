@@ -17,7 +17,7 @@ function ProdItems(props) {
                 promo={props.promo}
                 id={props.id}
                 stoc={props.stoc}
-                update={props.update} 
+               
             /> 
         </li>
     );  

@@ -52,7 +52,7 @@ function ProdList(props) {
                     pret={prod.pret}
                     description={prod.description}
                     promo={prod.oferta}
-                        stoc={prod.stoc}
+                    stoc={prod.stoc}
                         
                 />
             ))}
