@@ -9,6 +9,7 @@ export default function Cos(props) {
     const [local, setLocal] = useState(props.localstore)
     const countbuc = localStorage.getItem("count"+props.idp)
     const [count, setCount] = useState(countbuc)
+    const[total, setTotal] = useState(0)
     let elemcos = PROD_DATA.filter((fil) => fil.id === props.idp)[0]
     const pretafis = (elemcos.pret - (elemcos.pret / 100 * elemcos.oferta)).toFixed(2)
     const promo = (elemcos.pret / 100 * elemcos.oferta * count).toFixed(2)
@@ -32,15 +33,39 @@ export default function Cos(props) {
         // dispatch({ type: "update" })
          
 }
+    const pretTotal=props.localstore.map((ids) => {
+            let elcos = PROD_DATA.filter((fil) => fil.id === ids)[0]
+            const pretaf = (elcos.pret - (elcos.pret / 100 * elcos.oferta)).toFixed(2)
+            const pretotal = (pretaf * localStorage["count"+ids])
+            return pretotal
+            })
 
-    useEffect(() => {     
-         localStorage.setItem("count" + props.idp, count)     
+    const tot = parseFloat(pretTotal.reduce((a, b) => a + b, 0)).toFixed(2)
+    localStorage.setItem("total",tot)
+    
+    props.changeTotal()
+            
+    useEffect(() => {
+         localStorage.setItem("total",total)
+    }, [total]);     
+    
+    useEffect(() => {
+        setTotal(tot)
+         localStorage.setItem("count" + props.idp, count)
+         props.changeTotal()
     }, [count]);
     
-     useEffect(() => {  
-         localStorage.setItem("items", local.join(",")) 
+     useEffect(() => {
+         setTotal(tot)
+         localStorage.setItem("items", local.join(","))
+         props.reload() 
+         
         }, [local]);
    
+    useEffect(() => {
+    setTotal(tot)
+    }, [])
+  
     return (
         <div className="divcos">
          <div className="produs_cos"> 
